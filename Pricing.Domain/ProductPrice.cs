@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pricing.Domain
 {
-    public class ProductPrice : Entity
+    public sealed class ProductPrice : Entity
     {
         public ProductPrice(Guid productId, decimal price)
         {
@@ -18,10 +18,10 @@ namespace Pricing.Domain
 
         //Dummy methods to calcuate discounted prices
         public decimal GetDiscountedPrice()//IDiscountedPriceResolver resolver
-        { 
+        {
             //return resolver.ResolvePriceFor(this);
 
-            return Price; 
+            return Price;
         }
     }
 }

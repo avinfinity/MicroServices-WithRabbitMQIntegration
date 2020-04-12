@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProductCatalogue.Infrastructure
 {
-    public class ProductsRepository : IProductRepository
+    internal class ProductsRepository : IProductRepository
     {
         private readonly ProductsDbContext _productsDbContext;
 

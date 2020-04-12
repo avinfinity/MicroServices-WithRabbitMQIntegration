@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using IntegrationEventLogService;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
@@ -19,7 +20,7 @@ namespace Pricing.API
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static void Main(string[] args)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             Log.Logger = CreateSerilogLogger(configuration);
@@ -36,14 +37,12 @@ namespace Pricing.API
                 });
 
                 Log.Information("Starting web host (Pricing.API)...");
-                host.Run();
 
-                return 0;
+                host.Run();
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Program terminated unexpectedly (Pricing.API)!");
-                return 1;
             }
             finally
             {
@@ -84,43 +83,5 @@ namespace Pricing.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    }
-
-    static class Extensions
-    {
-        public static IWebHost MigrateDbContext<TContext>(this IWebHost webHost, Action<TContext, IServiceProvider> migrateFunc) where TContext : DbContext
-        {
-            using (var scope = webHost.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var logger = services.GetRequiredService<ILogger<TContext>>();
-                var context = services.GetService<TContext>();
-
-                try
-                {
-                    logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
-
-                    var retries = 10;
-                    var retry = Policy.Handle<SqlException>()
-                        .WaitAndRetry(
-                            retryCount: retries,
-                            sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
-                            onRetry: (exception, timeSpan, retry, ctx) =>
-                            {
-                                logger.LogWarning(exception, "[{prefix}] Exception {ExceptionType} with message {Message} detected on attempt {retry} of {retries}",
-                                    nameof(TContext), exception.GetType().Name, exception.Message, retry, retries);
-                            });
-                    retry.Execute(() => migrateFunc(context, services));
-
-                    logger.LogInformation("Migrated database associated with context {DbContextName}", typeof(TContext).Name);
-                }
-                catch (Exception ex)
-                {
-                    logger.LogError(ex, "An error occurred while migrating the database used on context {DbContextName}", typeof(TContext).Name);
-                }
-            }
-
-            return webHost;
-        }
     }
 }

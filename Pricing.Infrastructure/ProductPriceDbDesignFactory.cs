@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Pricing.Infrastructure
 {
-    public class ProductPriceDbDesignFactory : IDesignTimeDbContextFactory<ProductPriceDbContext>
+    internal class ProductPriceDbDesignFactory : IDesignTimeDbContextFactory<ProductPriceDbContext>
     {
         public ProductPriceDbContext CreateDbContext(string[] args)
         {

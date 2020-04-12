@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace ProductCatalogue.Infrastructure
 {
-    public class ProductsDbContextDesignFactory : IDesignTimeDbContextFactory<ProductsDbContext>
+    internal class ProductsDbContextDesignFactory : IDesignTimeDbContextFactory<ProductsDbContext>
     {
         public ProductsDbContext CreateDbContext(string[] args)
         {

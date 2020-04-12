@@ -1,12 +1,9 @@
 ﻿using Pricing.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pricing.Infrastructure
 {
-    public class ProductPriceRepository : IProductPriceRepository
+    internal class ProductPriceRepository : IProductPriceRepository
     {
         private readonly ProductPriceDbContext _priceDbContext;
 

@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pricing.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pricing.Infrastructure
 {
-    public class ProductPriceDbContext : DbContext, IUnitOfWork
+    public sealed class ProductPriceDbContext : DbContext, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "prices";
         public DbSet<ProductPrice> ProductPrices { get; set; }
