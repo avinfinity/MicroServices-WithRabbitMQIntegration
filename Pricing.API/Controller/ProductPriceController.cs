@@ -28,7 +28,7 @@ namespace Pricing.API
 
         [HttpGet]
         [Route("{productId:int}")]
-        public async Task<ActionResult<ProductPrice>> GetProductPriceAsync(int productId)
+        public async Task<ActionResult<ProductPriceDTO>> GetProductPriceAsync(int productId)
         {
             try
             {
