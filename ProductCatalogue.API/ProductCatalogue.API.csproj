@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EventBuss\EventBus.csproj" />
     <ProjectReference Include="..\IntegrationEventLogService\IntegrationEventLogService.csproj" />
-    <ProjectReference Include="..\ProductCatalogue.Infra\ProductCatalogue.Infrastructure.csproj" />
+    <ProjectReference Include="..\ProductCatalogue.Infrastructure\ProductCatalogue.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
