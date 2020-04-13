@@ -27,7 +27,7 @@ dotnet ef database update --context ProductsDbContext
 After that you must be able to see below structure in ServerExplorer of Visual Studio
 ![Databases - Server Explorer in Visual Studio](DataConnections.png)
 
-After this, Integration unit test cases can be run from ![Integration tests](IntegrationUnitTests)
+After this, Integration unit test cases can be run from ![Integration tests](https://github.com/avinfinity/MicroServices-WithRabbitMQIntegration/tree/master/IntegrationUnitTests)
 
 #### Note:
 Databases would be automatically seeded with test data while running integration test cases
