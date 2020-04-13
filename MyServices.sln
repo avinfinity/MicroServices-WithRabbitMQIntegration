@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricing.API.FunctionalTests", "Pricing.API.FunctionalTests\Pricing.API.FunctionalTests.csproj", "{D3A762BC-FE50-4B3D-925D-3A704F29B7BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationUnitTests", "IntegrationUnitTests\IntegrationUnitTests.csproj", "{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationUnitTests", "IntegrationUnitTests\IntegrationUnitTests.csproj", "{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
