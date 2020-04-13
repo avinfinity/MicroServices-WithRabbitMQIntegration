@@ -67,7 +67,9 @@ namespace IntegrationUnitTests
             var items = await priceResponse.Content.ReadAsStringAsync();
             var price = JsonConvert.DeserializeObject<ProductPrice>(items);
 
-            Assert.True(price.ProductId == addNewProductCommand.ProductId);//ProductId is equal, which shows that this product is also avaliable within Pricing microservices
+            //ProductId is equal, which shows that after adding to ProductCatalog microservice, 
+            //this product is also avaliable within Pricing microservices over integration events via RabbitMQ Event Bus
+            Assert.True(price.ProductId == addNewProductCommand.ProductId);
             Assert.True((price.Price - addNewProductCommand.UnitPrice) < new decimal(0.0000000000001)); //Prices are equal
         }
     }
