@@ -11,10 +11,10 @@ namespace ProductCatalogue.API.Commands
     public class AddNewProductCommand : IRequest<bool>
     {
         [DataMember]
-        public int Id { get; private set; }
+        public int StoreId { get; private set; }
 
         [DataMember]
-        public int StoreId { get; private set; }
+        public Guid ProductId { get; set; }
 
         [DataMember]
         public string Name { get; private set; }
@@ -34,11 +34,11 @@ namespace ProductCatalogue.API.Commands
         [DataMember]
         public string PictureUrl { get; private set; }
 
-        public AddNewProductCommand(int productId, int storeid, string name, 
+        public AddNewProductCommand(int storeid, string name, 
             string description, string category, int units, 
             decimal unitprice, string picUrl )
         {
-            Id = productId;
+            ProductId = Guid.NewGuid();
             StoreId = storeid;
             Name = name;
             Description = description;

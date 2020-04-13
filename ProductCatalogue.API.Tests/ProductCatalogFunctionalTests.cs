@@ -54,7 +54,7 @@ namespace ProductCatalogue.API.FunctionalTests
         {
             //Arrange
             var catalogController = CreateController();
-            var newProductCommand = new AddNewProductCommand(10, 10, "Something", 
+            var newProductCommand = new AddNewProductCommand( 10, "Something", 
                 string.Empty, string.Empty, 10, 100, string.Empty);
            
             //Act

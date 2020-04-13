@@ -1,0 +1,62 @@
+﻿[
+  {
+    "productid": "62736efe-a0f9-473c-aa07-9d44d9e8121b",
+    "storeid": 12,
+    "name": "Completely Random",
+    "description": "This is a random item",
+    "productCategory": "Random",
+    "units": 10,
+    "unitprice": 2000.00,
+    "pictureurl": null
+  },
+  {
+    "description": "This is a random item",
+    "name": "Completely Random",
+    "pictureurl": null,
+    "productCategory": "Random",
+    "productid": "b5f3bb1a-14ed-4563-ab17-ef16a913ecc2",
+    "storeid": 12,
+    "unitprice": 2000.00,
+    "units": 10
+  },
+  {
+    "productid": "3435fc64-54c0-4214-9de7-42e95d853cf0",
+    "storeid": 12,
+    "name": "Completely Random",
+    "description": "This is a random item",
+    "productCategory": "Random",
+    "units": 10,
+    "unitprice": 2000.00,
+    "pictureurl": null
+  },
+  {
+    "productid": "52dd64a8-cd0e-467e-8097-35604e83dae3",
+    "storeid": 12,
+    "name": "Completely Random",
+    "description": "This is a random item",
+    "productCategory": "Random",
+    "units": 10,
+    "unitprice": 2000.00,
+    "pictureurl": null
+  },
+  {
+    "productid": "74ffecdf-eef5-46a1-a52c-c91246cb42f0",
+    "storeid": 12,
+    "name": "Completely Random",
+    "description": "This is a random item",
+    "productCategory": "Random",
+    "units": 10,
+    "unitprice": 2000.00,
+    "pictureurl": null
+  },
+  {
+    "productid": "90f2c843-adb6-47c0-b335-3cf1cd35b91d",
+    "storeid": 12,
+    "name": "Completely Random",
+    "description": "This is a random item",
+    "productCategory": "Random",
+    "units": 10,
+    "unitprice": 2000.00,
+    "pictureurl": null
+  }
+]

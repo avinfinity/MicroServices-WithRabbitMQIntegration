@@ -26,21 +26,28 @@ namespace ProductCatalogue.Infrastructure
 
         public Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            //1. Direct query execution -- This is always faster than EF Linq to SQL queries
+            //1. Direct query execution -- Pros: This is always faster than EF Linq to SQL queries
+            //Cons: May induce unnecessary execution calls on database which can make execution actualy slower
+            //esecially after SaveChangesAsync() after which anyways DbSet has all latest data in memory
 
             //var connection = GetConnection();
-
             //return connection.QueryAsync<Product>("Select * FROM Products");
 
             //2. using product db context - EF Linq to SQL query
             return Task.FromResult(_productsDbContext.Products as IEnumerable<Product>);
         }
 
-        public Task<Product> GetProductByIdAsync(int productId)
+        public async Task<Product> GetProductByIdAsync(int productId)
         {
-            var connection = GetConnection();
+            //1. Direct query execution -- Pros: This is always faster than EF Linq to SQL queries
+            //Cons: May induce unnecessary execution calls on database which can make execution actualy slower
+            //esecially after SaveChangesAsync() after which anyways DbSet has all latest data in memory
 
-            return connection.QueryFirstAsync<Product>("Select * FROM products.Products WHERE Id = @productId", new { productId });
+            //var connection = GetConnection();
+            //return connection.QueryFirstAsync<Product>("Select * FROM products.Products WHERE Id = @productId", new { productId });
+
+            //2. using product db context - EF Linq to SQL query
+            return await _productsDbContext.Products.FindAsync(productId);
         }
 
         public Task<IEnumerable<Product>> GetProductByStoreAsync(int storeId)

@@ -1,4 +1,5 @@
-﻿using Pricing.Domain;
+﻿using AutoMapper;
+using Pricing.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,24 @@ namespace Pricing.API
     public class ProductPriceQuery : IProductPriceQuery
     {
         private readonly IProductPriceRepository _productRepo;
+        private readonly IMapper _mapper;
 
-        public ProductPriceQuery(IProductPriceRepository productRepository)
+        public ProductPriceQuery(IProductPriceRepository productRepository, IMapper mapper)
         {
             _productRepo = productRepository;
+            _mapper = mapper;
         }
 
-        public async Task<ProductPriceDTO> GetProductPriceAsync(int productId)
+        public async Task<IEnumerable<ProductPriceDTO>> GetAllPricesAsync(Guid productId)
+        {
+            var prices = await _productRepo.GetAllPrices(productId);
+            return _mapper.Map<IEnumerable<ProductPriceDTO>>(prices);
+        }
+
+        public async Task<ProductPriceDTO> GetProductPriceAsync(Guid productId)
         {
             var price = await _productRepo.GetPriceForProductAsync(productId);
-            return new ProductPriceDTO() { Price = price };
+            return _mapper.Map<ProductPriceDTO>(price);
         }
     }
 }

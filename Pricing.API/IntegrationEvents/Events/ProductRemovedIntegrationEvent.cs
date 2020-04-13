@@ -8,11 +8,11 @@ namespace Pricing.API.Events
 {
     public class ProductRemovedIntegrationEvent : IntegrationEvent
     {
-        public ProductRemovedIntegrationEvent(int productId)
+        public ProductRemovedIntegrationEvent(Guid productId)
         {
             ProductId = productId;
         }
 
-        public int ProductId { get; }
+        public Guid ProductId { get; }
     }
 }

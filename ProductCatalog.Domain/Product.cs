@@ -6,12 +6,11 @@ namespace ProductCatalogue.Domain
     {
         public Product() { }
 
-        public Product(int id, int storeId, string name,
+        public Product(Guid productId, int storeId, string name,
             string description, string productCategory, int units,
             decimal unitPrice, string picturePath)
         {
-            Id = id;
-            ProductId = Guid.NewGuid();
+            ProductId = productId == Guid.Empty ? Guid.NewGuid() : productId;
             StoreId = storeId;
             Name = name;
             Description = description;

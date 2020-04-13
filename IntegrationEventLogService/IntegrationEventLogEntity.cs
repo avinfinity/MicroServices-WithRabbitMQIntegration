@@ -19,6 +19,7 @@ namespace IntegrationEventLogService
             Content = JsonConvert.SerializeObject(@event);
             State = IntegrationEventState.NotPublished;
             TimesSent = 0;
+            IntegrationEvent = @event;
             TransactionId = transactionId.ToString();
         }
         public Guid EventId { get; private set; }

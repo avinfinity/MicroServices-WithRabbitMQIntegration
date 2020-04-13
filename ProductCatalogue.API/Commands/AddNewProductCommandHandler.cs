@@ -25,7 +25,7 @@ namespace ProductCatalogue.API.Commands
 
         public async Task<bool> Handle(AddNewProductCommand request, CancellationToken cancellationToken)
         {
-            var product = new Product(request.Id, request.StoreId, request.Name, request.Description,
+            var product = new Product(request.ProductId, request.StoreId, request.Name, request.Description,
                request.ProductCategory, request.Units, request.UnitPrice, request.PictureUrl);
 
             var productAddedIntegrationEvent = new ProductAddedIntegrationEvent(product.ProductId,request.Units,request.UnitPrice);

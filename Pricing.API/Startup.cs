@@ -30,7 +30,7 @@ namespace Pricing.API
         {
             services
                 .AddFrameworkServices()
-                .AddHealthChecks(Configuration)
+                .AddHealthChecks(Configuration, GetType().Namespace)
                 .AddDbContext(Configuration)
                 .AddIntegrationServices(Configuration)
                 .AddEventBus(Configuration)

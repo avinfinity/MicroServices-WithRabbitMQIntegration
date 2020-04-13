@@ -4,27 +4,34 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ProductCatalogue.Infrastructure;
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ProductCatalogue.API.IntegrationEvents
 {
     public class ProductCatalogueIntegrationEventService : IProductCatalogueIntegrationEventService
     {
-        private readonly Func<DbConnection, IIntegrationEventLogService> _integrationEventLogServiceFactory;
         private ProductsDbContext _productDbContext;
         private readonly IEventBus _eventBus;
         private readonly IIntegrationEventLogService _eventLogService;
         private readonly ILogger<ProductCatalogueIntegrationEventService> _logger;
 
         public ProductCatalogueIntegrationEventService(IEventBus eventBus, ProductsDbContext productContext,
-            Func<DbConnection, IIntegrationEventLogService> integrationEventLogServiceFactory,
+            Func<DbConnection, List<Type>, IIntegrationEventLogService> integrationEventLogServiceFactory,
             ILogger<ProductCatalogueIntegrationEventService> logger)
         {
             _productDbContext = productContext;
-            _integrationEventLogServiceFactory = integrationEventLogServiceFactory; 
             _eventBus = eventBus;
-            _eventLogService = _integrationEventLogServiceFactory(_productDbContext.Database.GetDbConnection());
+            var connection = _productDbContext.Database.GetDbConnection();
+
+            var eventTypes = GetType().Assembly.GetTypes()
+               .Where(t => t.Name.EndsWith(nameof(IntegrationEvent)))
+               .ToList();
+
+            _eventLogService = integrationEventLogServiceFactory(connection, eventTypes);
             _logger = logger;
         }
 

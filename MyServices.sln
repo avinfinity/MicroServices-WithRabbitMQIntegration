@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.Infrastructure", "ProductCatalogue.Infra\ProductCatalogue.Infrastructure.csproj", "{6CB6076D-CD36-4639-A512-4EFF031E1B97}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductCatalogue", "ProductCatalogue", "{4D93889D-C265-41D5-A61A-BE4B8DEC2576}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogue", "Catalogue", "{4D93889D-C265-41D5-A61A-BE4B8DEC2576}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pricing", "Pricing", "{7216BFA0-771F-4B5F-A4D9-10F2F8897CB9}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{89588A58-EB4E-4170-BB38-36A8CE3A5ACE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricing.API.FunctionalTests", "Pricing.API.FunctionalTests\Pricing.API.FunctionalTests.csproj", "{D3A762BC-FE50-4B3D-925D-3A704F29B7BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationUnitTests", "IntegrationUnitTests\IntegrationUnitTests.csproj", "{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{D3A762BC-FE50-4B3D-925D-3A704F29B7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3A762BC-FE50-4B3D-925D-3A704F29B7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3A762BC-FE50-4B3D-925D-3A704F29B7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64742EB-5DB4-4A3C-85B4-0F35A777FECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

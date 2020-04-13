@@ -12,6 +12,7 @@ namespace Pricing.API
         public AutoMapperProfile()
         {
             CreateMap<ProductPrice, ProductPriceDTO>();
+            CreateMap<ProductPriceDTO, ProductPrice>();
         }
     }
 }

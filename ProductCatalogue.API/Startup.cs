@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProductCatalogue.API.IntegrationEvents;
 using ProductCatalogue.API.PipelineBehaviors;
 using ProductCatalogue.API.Queries;
 using ProductCatalogue.Infrastructure;
@@ -28,7 +29,7 @@ namespace ProductCatalogue.API
         {
             services
                 .AddFrameworkServices()
-                .AddHealthChecks(Configuration)
+                .AddHealthChecks(Configuration,GetType().Namespace)
                 .AddDbContext(Configuration)
                 .AddIntegrationServices(Configuration)
                 .AddEventBus(Configuration)
@@ -37,6 +38,7 @@ namespace ProductCatalogue.API
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>))
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(PublishEventsBehavior<,>))
                 .AddAutoMapper(c => c.AddProfile<AutoMapperProfile>(), this.GetType())
+                .AddTransient<IProductCatalogueIntegrationEventService, ProductCatalogueIntegrationEventService>()
                 .AddTransient<IProductCatalogueQuery, ProductCatalogueQuery>();
         }
 

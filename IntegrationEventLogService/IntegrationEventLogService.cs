@@ -13,21 +13,26 @@ namespace IntegrationEventLogService
     public class IntegrationEventLogService : IIntegrationEventLogService
     {
         private readonly IntegrationLogDbContext _integrationEventLogContext;
-        private readonly DbConnection _dbConnection;
         private readonly List<Type> _eventTypes;
 
-        public IntegrationEventLogService(DbConnection dbConnection)
+        public IntegrationEventLogService(DbConnection dbConnection, List<Type> eventTypes)
         {
-            _dbConnection = dbConnection ?? throw new ArgumentNullException(nameof(dbConnection));
             _integrationEventLogContext = new IntegrationLogDbContext(
-                new DbContextOptionsBuilder<IntegrationLogDbContext>()
-                    .UseSqlServer(_dbConnection)
-                    .Options);
-
-            _eventTypes = Assembly.Load(Assembly.GetEntryAssembly().FullName)
-                .GetTypes()
-                .Where(t => t.Name.EndsWith(nameof(IntegrationEvent)))
-                .ToList();
+            new DbContextOptionsBuilder<IntegrationLogDbContext>()
+                .UseSqlServer(dbConnection)
+                .Options);
+           
+            if(eventTypes == null || eventTypes.Count == 0)
+            {
+                _eventTypes = Assembly.Load(Assembly.GetEntryAssembly().FullName)
+               .GetTypes()
+               .Where(t => t.Name.EndsWith(nameof(IntegrationEvent)))
+               .ToList();
+            }
+            else
+            {
+                _eventTypes = eventTypes.ToList();
+            }
         }
 
         public async Task<IEnumerable<IntegrationEventLogEntity>> RetrieveEventLogsPendingToPublishAsync(Guid transactionId)

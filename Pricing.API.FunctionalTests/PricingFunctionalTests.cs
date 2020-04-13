@@ -12,10 +12,11 @@ namespace Pricing.API.FunctionalTests
         public async void Test_API_GetProductPrice_Valid_ProductId()
         {
             //Arrange
-            var priceController = CreateController();
+            var productId = Guid.NewGuid();
+            var priceController = CreateController(productId);
 
             //Act
-            var price = await priceController.GetProductPriceAsync(1);
+            var price = await priceController.GetProductPriceAsync(productId);
 
             //Assert
             var result = Assert.IsType<OkObjectResult>(price.Result);
@@ -29,10 +30,11 @@ namespace Pricing.API.FunctionalTests
         public async void Test_API_GetProductPrice_Invalid_ProductId()
         {
             //Arrange
-            var priceController = CreateController();
+            var productId = Guid.NewGuid();
+            var priceController = CreateController(productId);
 
             //Act
-            var price = await priceController.GetProductPriceAsync(10);
+            var price = await priceController.GetProductPriceAsync(Guid.Empty);
 
             //Assert
             Assert.IsType<NotFoundResult>(price.Result);
@@ -40,11 +42,11 @@ namespace Pricing.API.FunctionalTests
             Mock.VerifyAll();
         }
 
-        private ProductPriceController CreateController()
+        private ProductPriceController CreateController(Guid includedId)
         {
             var queryMock = new Mock<IProductPriceQuery>();
-            queryMock.Setup(x => x.GetProductPriceAsync(1)).Returns(Task.FromResult(new ProductPriceDTO() { Price = 1000 }));
-            queryMock.Setup(x => x.GetProductPriceAsync(10)).Throws(new Exception(new NotFoundObjectResult(10).ToString()));
+            queryMock.Setup(x => x.GetProductPriceAsync(includedId)).Returns(Task.FromResult(new ProductPriceDTO() { Price = 1000 }));
+            queryMock.Setup(x => x.GetProductPriceAsync(Guid.Empty)).Throws(new Exception(new NotFoundObjectResult(10).ToString()));
             return new ProductPriceController(queryMock.Object);
         }
     }

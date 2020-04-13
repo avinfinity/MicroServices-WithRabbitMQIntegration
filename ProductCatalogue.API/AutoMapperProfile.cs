@@ -13,6 +13,7 @@ namespace ProductCatalogue.API
         public AutoMapperProfile()
         {
             CreateMap<Product, ProductDTO>();
+            CreateMap<ProductDTO, Product>();
         }
     }
 }

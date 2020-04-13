@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ProductCatalogue.API.IntegrationEvents;
 using ProductCatalogue.Infrastructure;

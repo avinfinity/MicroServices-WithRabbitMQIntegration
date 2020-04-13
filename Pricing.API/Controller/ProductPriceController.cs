@@ -20,15 +20,15 @@ namespace Pricing.API
         }
 
         [HttpGet]
-        public ActionResult<bool> GetProductPriceAsync()
+        public ActionResult<bool> GetAllPricesAsync()
         {
             //var result = await _productPriceQuery.GetProductPriceAsync(productId);
             return Ok(true);
         }
 
         [HttpGet]
-        [Route("{productId:int}")]
-        public async Task<ActionResult<ProductPriceDTO>> GetProductPriceAsync(int productId)
+        [Route("{productId:Guid}")]
+        public async Task<ActionResult<ProductPriceDTO>> GetProductPriceAsync(Guid productId)
         {
             try
             {

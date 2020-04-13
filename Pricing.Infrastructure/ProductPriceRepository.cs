@@ -1,4 +1,8 @@
-﻿using Pricing.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using Pricing.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pricing.Infrastructure
@@ -20,17 +24,26 @@ namespace Pricing.Infrastructure
             return true;
         }
 
-        public async Task<decimal> GetPriceForProductAsync(int productId)
+        public Task<IEnumerable<ProductPrice>> GetAllPrices(Guid productId)
         {
-            var product = await _priceDbContext.FindAsync<ProductPrice>(productId);
-            return product.Price;
+            return Task.FromResult(_priceDbContext.ProductPrices.AsEnumerable());
         }
 
-        public async Task<bool> RemoveProductPriceAsync(int productId)
+        public async Task<ProductPrice> GetPriceForProductAsync(Guid productId)
         {
-            var entity = await _priceDbContext.FindAsync<ProductPrice>(productId);
-            _priceDbContext.ProductPrices.Remove(entity);
-            return true;
+            var price = await _priceDbContext.ProductPrices.FirstOrDefaultAsync(x => x.ProductId == productId);
+            return price;
+        }
+
+        public async Task<bool> RemoveProductPriceAsync(Guid productId)
+        {
+            var entity = await _priceDbContext.ProductPrices.FirstOrDefaultAsync(x => x.ProductId == productId);
+            if(entity != null)
+            {
+                _priceDbContext.ProductPrices.Remove(entity);
+            }
+            
+            return entity != null;
         }
     }
 }

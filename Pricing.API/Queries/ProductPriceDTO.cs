@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Pricing.API
 {
@@ -7,5 +8,8 @@ namespace Pricing.API
     {
         [DataMember]
         public decimal Price { get; set; }
+
+        [DataMember]
+        public Guid ProductId { get; set; }
     }
 }

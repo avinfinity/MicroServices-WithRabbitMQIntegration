@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using RabbitMQ.Client;
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
 
 namespace IntegrationEventLogService
@@ -18,8 +19,8 @@ namespace IntegrationEventLogService
         public static IServiceCollection AddIntegrationServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
-                sp => (DbConnection c) => new IntegrationEventLogService(c));
+            services.AddTransient<Func<DbConnection, List<Type>, IIntegrationEventLogService>>(
+                sp => (DbConnection c, List<Type> integrationEventTypes) => new IntegrationEventLogService(c, integrationEventTypes));
 
             services.AddSingleton<IRabbitMQConnection>(sp =>
             {

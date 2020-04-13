@@ -7,6 +7,7 @@ namespace Pricing.API
 {
     public interface IProductPriceQuery
     {
-        Task<ProductPriceDTO> GetProductPriceAsync(int productId);
+        Task<IEnumerable<ProductPriceDTO>> GetAllPricesAsync(Guid productId);
+        Task<ProductPriceDTO> GetProductPriceAsync(Guid productId);
     }
 }

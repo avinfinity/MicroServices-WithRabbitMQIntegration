@@ -30,7 +30,7 @@ namespace ProductCatalogue.API
             return services;
         }
 
-        public static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration, string identifier)
         {
             var hcBuilder = services.AddHealthChecks();
 
@@ -39,13 +39,13 @@ namespace ProductCatalogue.API
             hcBuilder
                 .AddSqlServer(
                     configuration["ConnectionString"],
-                    name: "ProductCatalogueDB-check",
-                    tags: new string[] { "productcataloguedb" });
+                    name: $"{identifier}-check",
+                    tags: new string[] { $"{identifier}" });
 
             hcBuilder
                 .AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
-                    name: "ProductCatalogueDB-rabbitmqbus-check",
+                    name: $"{identifier}-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });
             return services;
         }
