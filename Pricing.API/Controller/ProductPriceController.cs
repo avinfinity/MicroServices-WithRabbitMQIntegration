@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pricing.Domain;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Pricing.API
 {
@@ -20,10 +19,10 @@ namespace Pricing.API
         }
 
         [HttpGet]
-        public ActionResult<bool> GetAllPricesAsync()
+        public async Task<ActionResult<IEnumerable<ProductPriceDTO>>> GetAllPricesAsync()
         {
-            //var result = await _productPriceQuery.GetProductPriceAsync(productId);
-            return Ok(true);
+            var result = await _productPriceQuery.GetAllPricesAsync();
+            return Ok(result);
         }
 
         [HttpGet]

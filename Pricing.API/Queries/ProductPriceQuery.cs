@@ -18,9 +18,9 @@ namespace Pricing.API
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProductPriceDTO>> GetAllPricesAsync(Guid productId)
+        public async Task<IEnumerable<ProductPriceDTO>> GetAllPricesAsync()
         {
-            var prices = await _productRepo.GetAllPrices(productId);
+            var prices = await _productRepo.GetAllPrices();
             return _mapper.Map<IEnumerable<ProductPriceDTO>>(prices);
         }
 

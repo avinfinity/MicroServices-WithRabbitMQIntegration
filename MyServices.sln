@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.Infrastruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.API.FunctionalTests", "ProductCatalogue.API.FunctionalTests\ProductCatalogue.API.FunctionalTests.csproj", "{EC331420-411E-42CF-83A8-79F6AEF304D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{941836E0-17F7-475A-B3B1-D75E09C1032F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGateway", "WebGateway\WebGateway.csproj", "{AD56F349-0C66-4C69-8384-275A9F90F976}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,10 @@ Global
 		{EC331420-411E-42CF-83A8-79F6AEF304D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC331420-411E-42CF-83A8-79F6AEF304D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC331420-411E-42CF-83A8-79F6AEF304D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD56F349-0C66-4C69-8384-275A9F90F976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD56F349-0C66-4C69-8384-275A9F90F976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD56F349-0C66-4C69-8384-275A9F90F976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD56F349-0C66-4C69-8384-275A9F90F976}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +120,7 @@ Global
 		{D3A762BC-FE50-4B3D-925D-3A704F29B7BB} = {89588A58-EB4E-4170-BB38-36A8CE3A5ACE}
 		{EB6AEA05-1CE9-446A-A691-25D57A56C66E} = {4D93889D-C265-41D5-A61A-BE4B8DEC2576}
 		{EC331420-411E-42CF-83A8-79F6AEF304D1} = {2ACDEF6E-973A-46DE-88EF-7806EB0FE35A}
+		{AD56F349-0C66-4C69-8384-275A9F90F976} = {941836E0-17F7-475A-B3B1-D75E09C1032F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {20E92A6D-FACD-4195-944A-1DED602CC9CA}

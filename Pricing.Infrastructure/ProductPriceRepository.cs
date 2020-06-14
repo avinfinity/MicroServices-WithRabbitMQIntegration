@@ -24,7 +24,7 @@ namespace Pricing.Infrastructure
             return true;
         }
 
-        public Task<IEnumerable<ProductPrice>> GetAllPrices(Guid productId)
+        public Task<IEnumerable<ProductPrice>> GetAllPrices()
         {
             return Task.FromResult(_priceDbContext.ProductPrices.AsEnumerable());
         }

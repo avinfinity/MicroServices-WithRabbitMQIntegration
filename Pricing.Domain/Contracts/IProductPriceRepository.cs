@@ -7,7 +7,7 @@ namespace Pricing.Domain
 {
     public interface IProductPriceRepository : IRepository
     {
-        Task<IEnumerable<ProductPrice>> GetAllPrices(Guid productId);
+        Task<IEnumerable<ProductPrice>> GetAllPrices();
 
         Task<ProductPrice> GetPriceForProductAsync(Guid productId);
 
