@@ -1,7 +1,7 @@
 # Microservices - Sample implementation using RabbitMQ
 
 ## Architecture Overview
-![Architecture Overview](Overview.PNG)
+![Architecture Overview](Overview.png)
 
 ## Prerequisites 
 
